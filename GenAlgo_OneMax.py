@@ -21,5 +21,11 @@ def eval_func(individual):
     return len(individual) - abs(sum(individual) - target_sum)
 
 #Create the toolbox with the right parameters
+#Such that the fitness function can keep track of the individuals
 def create_toolbox(num_bits):
     creator.create("FitnessMax", base.Fitness, weights=(1.0,))
+    creator.create("Individual", list, fitness=creator.FitnessMax)
+    
+# Initialize the toolbox
+# Toolbox is used to store various functions
+toolbox = base.Toolbox()
