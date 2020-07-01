@@ -29,3 +29,7 @@ def create_toolbox(num_bits):
 # Initialize the toolbox
 # Toolbox is used to store various functions
 toolbox = base.Toolbox()
+
+#To register various functions to to this toolbox
+#Generate random attributes
+toolbox.register('attr_bool', random.randint, 0, 1)
