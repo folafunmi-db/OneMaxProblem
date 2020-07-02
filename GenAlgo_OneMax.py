@@ -31,5 +31,19 @@ def create_toolbox(num_bits):
 toolbox = base.Toolbox()
 
 #To register various functions to to this toolbox
+
 #Generate random attributes
 toolbox.register('attr_bool', random.randint, 0, 1)
+
+#Initialize structures
+#InitRepeat takes 3 arguments: a container class, a function to fill the container
+#and the number of times we want the function to repeat itself
+toolbox.register("individual", tools.initRepeat,creator.Individual,\
+    toolbox.attr_bool, num_bits)
+
+#Define a population to be a list of individuals
+toolbox.register("population", tools.initRepeat, list, toolbox.individual)
+
+#Register Genetic Operators
+#Register the evaluation operator
+toolbox.register("evaluate", eval_func)
