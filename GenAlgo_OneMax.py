@@ -119,3 +119,21 @@ if __name__ == "__main__":
 
         #The population is entirely replaced with the offspring
         population[:] = offspring
+
+        #Gather all the fitnesses in one list and print the stats of the current generation
+        fits = [ind.fitness.values[0] for ind in population]
+
+        length = len(population)
+        mean = sum(fits)/length
+        sum2 = sum(X*X for x in fits)
+        std = abs(sum2/length - mean**2)**0.5
+
+        print('Min =', min(fits), ', Max =', max(fits))
+        print('Average =', round(mean, 2), ', Standard Dev =', round(std, 2))
+
+    print("\n==== End of evolution")
+
+    #Print the final output
+    best_ind = tools.selBest(population, 1)[0]
+    print('\nBest individual: \n', best_ind)
+    print('\nNumber of ones:', sum(best_ind))
