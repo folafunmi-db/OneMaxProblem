@@ -37,7 +37,7 @@ def create_toolbox(num_bits):
     #Initialize structures
     #InitRepeat takes 3 arguments: a container class, a function to fill the container
     #and the number of times we want the function to repeat itself
-    toolbox.register("individual", tools.initRepeat,creator.Individual,\
+    toolbox.register("individual", tools.initRepeat, creator.Individual,\
         toolbox.attr_bool, num_bits)
 
     #Define a population to be a list of individuals
@@ -51,7 +51,7 @@ def create_toolbox(num_bits):
     toolbox.register("mate", tools.cxTwoPoint)
 
     #Register the mutation opertor
-    toolbox.register("mutate", tools.mutFlipBit)
+    toolbox.register("mutate", tools.mutFlipBit, indpb=0.05)
 
     #Register the operator for selecting individuals for breeding
     toolbox.register("select", tools.selTournament, tournsize=3)
